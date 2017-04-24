@@ -19,6 +19,9 @@ public class Teste {
 		Funcionario f = new Funcionario();
 		f.setDataNascimento(new GregorianCalendar(1988, Calendar.NOVEMBER, 12));
 		f.setNome("Fernando");
+		f.setSalario(5000);
+		f.setConta(55544433);
+		f.setAgencia(321);
 		
 		Dependente d = new Dependente();
 		d.setNome("Vanessa");

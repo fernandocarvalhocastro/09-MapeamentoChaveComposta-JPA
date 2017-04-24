@@ -11,37 +11,46 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.SecondaryTable;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name="T_FUNCIONARIO")
-@SequenceGenerator(allocationSize=1, name="seqFuncionario", sequenceName="SQ_FUNCIONARIO")
+@Table(name = "T_FUNCIONARIO")
+@SecondaryTable(name="T_DADO_FUNCIONARIO")
+@SequenceGenerator(allocationSize = 1, name = "seqFuncionario", sequenceName = "SQ_FUNCIONARIO")
 public class Funcionario {
 
 	@Id
-	@GeneratedValue(generator="seqFuncionario", strategy=GenerationType.SEQUENCE)
-	@Column(name="cd_funcionario")
+	@GeneratedValue(generator = "seqFuncionario", strategy = GenerationType.SEQUENCE)
+	@Column(name = "cd_funcionario")
 	private int codigo;
-	
-	@Column(name="nm_funcionario",nullable=false, length=100)
+
+	@Column(name = "nm_funcionario", nullable = false, length = 100)
 	private String nome;
-	
-	@Column(name="dt_nascimento")
+
+	@Column(name = "dt_nascimento")
 	@Temporal(TemporalType.DATE)
 	private Calendar dataNascimento;
 	
-	/*
-	@OneToMany(mappedBy="funcionario", cascade=CascadeType.PERSIST, fetch=FetchType.LAZY)
-	private List<Dependente> dependentes;
-	 */
+	//OUTRAS TABELAS PRA MESMA ENTIDADE!!!
+
 	
-	public Funcionario(){
-		
+	@Column(name = "vl_salario", table="T_DADO_FUNCIONARIO")
+	private double salario;
+
+	@Column(name = "nr_conta" , table="T_DADO_FUNCIONARIO")
+	private int conta;
+
+	@Column(name = "nr_agencia", table="T_DADO_FUNCIONARIO")
+	private int agencia;
+
+	public Funcionario() {
+
 	}
-	
+
 	public Funcionario(String nome, Calendar dataNascimento) {
 		super();
 		this.nome = nome;
@@ -70,5 +79,29 @@ public class Funcionario {
 
 	public void setDataNascimento(Calendar dataNascimento) {
 		this.dataNascimento = dataNascimento;
+	}
+
+	public double getSalario() {
+		return salario;
+	}
+
+	public void setSalario(double salario) {
+		this.salario = salario;
+	}
+
+	public int getConta() {
+		return conta;
+	}
+
+	public void setConta(int conta) {
+		this.conta = conta;
+	}
+
+	public int getAgencia() {
+		return agencia;
+	}
+
+	public void setAgencia(int agencia) {
+		this.agencia = agencia;
 	}
 }
