@@ -15,11 +15,11 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "T_DEPENDENTE")
-@SequenceGenerator(allocationSize = 1, name = "seqDependente", sequenceName = "SQ_DEPENDENTE")
 @IdClass(DependentePK.class)
 public class Dependente {
 
 	@Id
+	@SequenceGenerator(allocationSize = 1, name = "seqDependente", sequenceName = "SQ_DEPENDENTE")
 	@GeneratedValue(generator = "seqDependente", strategy = GenerationType.SEQUENCE)
 	@Column(name = "cd_dependente")
 	private int codigo;

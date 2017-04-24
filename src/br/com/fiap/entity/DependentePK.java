@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class DependentePK implements Serializable{
 
 	private int funcionario;
-	private int dependente;
+	private int codigo;
 
 	public int getFuncionario() {
 		return funcionario;
@@ -16,11 +16,11 @@ public class DependentePK implements Serializable{
 	}
 
 	public int getDependente() {
-		return dependente;
+		return codigo;
 	}
 
 	public void setDependente(int dependente) {
-		this.dependente = dependente;
+		this.codigo = dependente;
 	}
 
 }
